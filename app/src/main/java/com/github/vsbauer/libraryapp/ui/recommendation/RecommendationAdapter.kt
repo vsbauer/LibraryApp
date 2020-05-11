@@ -5,15 +5,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.github.vsbauer.libraryapp.R
-import com.github.vsbauer.libraryapp.data.models.Item
+import com.github.vsbauer.libraryapp.data.models.Book
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.recommendation_item.view.*
 
 class RecommendationAdapter(val onItemClicked: (link: String) -> Unit) :
     RecyclerView.Adapter<RecommendationAdapter.ViewHolder>() {
-    private val data = ArrayList<Item>()
+    private val data = ArrayList<Book>()
 
-    fun updateData(list: List<Item>) {
+    fun updateData(list: List<Book>) {
         data.clear()
         data.addAll(list)
         notifyDataSetChanged()
@@ -33,15 +33,13 @@ class RecommendationAdapter(val onItemClicked: (link: String) -> Unit) :
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        fun bind(item: Item?) {
+        fun bind(book: Book) {
             itemView.apply {
-                item?.volumeInfo?.run {
-                    txt_name.text = title
-                    txt_author.text = if (authors.isNullOrEmpty()) "None" else authors.first()
-                    Picasso.get().load(imageLinks.thumbnail).into(img_book)
-                    setOnClickListener {
-                        onItemClicked(infoLink)
-                    }
+                txt_name.text = book.tittle
+                txt_author.text = book.author
+                Picasso.get().load(book.img).into(img_book)
+                setOnClickListener {
+                    onItemClicked(book.link)
                 }
 
             }
