@@ -34,8 +34,7 @@ class RecommendationFragment : Fragment(R.layout.fragment_recommendation) {
     }
 
     private fun onItemClicked(link: String) {
-        val myIntent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
-        startActivity(myIntent)
+        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(link)))
     }
 
 }
