@@ -2,12 +2,13 @@ package com.github.vsbauer.libraryapp.data
 
 import android.util.Log
 import com.github.vsbauer.libraryapp.data.models.Book
+import javax.inject.Inject
 
-object GoogleBooksRepository {
+class GoogleBooksRepository @Inject constructor(var service: BookApiService) : Repository {
 
-    suspend fun getBooks(search: String): List<Book> {
+    override suspend fun getBooks(search: String): List<Book> {
         try {
-            return BookApiService.newInstance().getBooks(search).bookDTOS.map {
+            return service.getBooks(search).bookDTOS.map {
                 Log.d("!!!Repos", it.toString())
                 val author = it.bookInfo.authors?.firstOrNull() ?: ""
                 Book(
