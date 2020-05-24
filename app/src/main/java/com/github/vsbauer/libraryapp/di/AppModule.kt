@@ -4,15 +4,15 @@ import com.github.vsbauer.libraryapp.data.BookApiService
 import com.github.vsbauer.libraryapp.di.viewmodel.ViewModelModule
 import dagger.Module
 import dagger.Provides
-import dagger.Reusable
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
 @Module(includes = [ViewModelModule::class])
 object AppModule {
     private const val API_URL = "https://www.googleapis.com/books/v1/"
 
-    @Reusable
+    @Singleton
     @Provides
     @JvmStatic
     fun provideBookApiService(): BookApiService {

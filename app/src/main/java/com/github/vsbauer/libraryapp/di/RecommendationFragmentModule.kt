@@ -4,13 +4,13 @@ import com.github.vsbauer.libraryapp.data.GoogleBooksRepository
 import com.github.vsbauer.libraryapp.data.IGoogleBooksRepository
 import dagger.Binds
 import dagger.Module
-import javax.inject.Singleton
+import dagger.Reusable
 
 
 @Module
 abstract class RecommendationFragmentModule {
 
-    @Singleton
+    @Reusable
     @Binds
     abstract fun bindRepository(repository: GoogleBooksRepository): IGoogleBooksRepository
 
