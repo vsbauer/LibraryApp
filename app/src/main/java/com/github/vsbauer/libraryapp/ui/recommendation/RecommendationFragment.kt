@@ -25,7 +25,7 @@ class RecommendationFragment : Fragment(R.layout.fragment_recommendation) {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    val viewModel: RecommendationViewModel by viewModels {
+    private val viewModel: RecommendationViewModel by viewModels {
         viewModelFactory
     }
 

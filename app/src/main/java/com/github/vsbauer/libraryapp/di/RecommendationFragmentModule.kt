@@ -1,12 +1,17 @@
 package com.github.vsbauer.libraryapp.di
 
-import com.github.vsbauer.libraryapp.ui.recommendation.RecommendationFragment
+import com.github.vsbauer.libraryapp.data.GoogleBooksRepository
+import com.github.vsbauer.libraryapp.data.IGoogleBooksRepository
+import dagger.Binds
 import dagger.Module
-import dagger.android.ContributesAndroidInjector
+import javax.inject.Singleton
 
 
 @Module
 abstract class RecommendationFragmentModule {
-    @ContributesAndroidInjector
-    abstract fun contributeRecommendationFragmentInjectorFactory(): RecommendationFragment
+
+    @Singleton
+    @Binds
+    abstract fun bindRepository(repository: GoogleBooksRepository): IGoogleBooksRepository
+
 }

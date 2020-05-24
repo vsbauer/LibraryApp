@@ -4,7 +4,8 @@ import android.util.Log
 import com.github.vsbauer.libraryapp.data.models.Book
 import javax.inject.Inject
 
-class GoogleBooksRepository @Inject constructor(var service: BookApiService) : Repository {
+class GoogleBooksRepository @Inject constructor(private val service: BookApiService) :
+    IGoogleBooksRepository {
 
     override suspend fun getBooks(search: String): List<Book> {
         try {
