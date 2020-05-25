@@ -2,18 +2,16 @@ package com.github.vsbauer.libraryapp.di.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.github.vsbauer.libraryapp.ui.recommendation.RecommendationViewModel
 import dagger.Binds
 import dagger.Module
-import dagger.multibindings.IntoMap
+import dagger.multibindings.Multibinds
 
 @Module
 abstract class ViewModelModule {
-    @Binds
-    @IntoMap
-    @ViewModelKey(RecommendationViewModel::class)
-    abstract fun bindRecommendationViewModel(repoViewModel: RecommendationViewModel): ViewModel
+
+    @Multibinds
+    abstract fun provideMap(): Map<Class<out ViewModel>, @JvmSuppressWildcards ViewModel>
 
     @Binds
-    abstract fun bindViewModelFactory(factory: LibraryViewModelFactory): ViewModelProvider.Factory
+    abstract fun bindViewModelFactory(viewModelFactory: LibraryViewModelFactory): ViewModelProvider.Factory
 }

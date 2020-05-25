@@ -1,4 +1,4 @@
-package com.github.vsbauer.libraryapp.di
+package com.github.vsbauer.libraryapp.di.recommendation
 
 import javax.inject.Scope
 

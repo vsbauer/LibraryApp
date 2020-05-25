@@ -1,6 +1,5 @@
 package com.github.vsbauer.libraryapp.ui.recommendation
 
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -10,12 +9,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.vsbauer.libraryapp.R
-import dagger.android.support.AndroidSupportInjection
+import com.github.vsbauer.libraryapp.di.app.AppWithAppProvider
+import com.github.vsbauer.libraryapp.di.recommendation.RecommendationFragmentComponent
 import kotlinx.android.synthetic.main.fragment_recommendation.*
 import javax.inject.Inject
 
 
 class RecommendationFragment : Fragment(R.layout.fragment_recommendation) {
+
     private val recommendationAdapter = RecommendationAdapter(
         onItemClicked = {
             onItemClicked(it)
@@ -29,13 +30,16 @@ class RecommendationFragment : Fragment(R.layout.fragment_recommendation) {
         viewModelFactory
     }
 
-    override fun onAttach(context: Context) {
-        AndroidSupportInjection.inject(this);
-        super.onAttach(context)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        RecommendationFragmentComponent.create((requireActivity().application as AppWithAppProvider).getAppProvider())
+            .inject(this)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+//        viewModel = ViewModelProvider(this, viewModelFactory)[RecommendationViewModel::class.java]
 
         recycler_recommend.apply {
             layoutManager = LinearLayoutManager(context)

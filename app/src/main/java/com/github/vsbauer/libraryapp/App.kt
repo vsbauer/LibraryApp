@@ -1,22 +1,28 @@
 package com.github.vsbauer.libraryapp
 
 import android.app.Application
-import com.github.vsbauer.libraryapp.di.DaggerAppComponent
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasAndroidInjector
-import javax.inject.Inject
+import com.github.vsbauer.libraryapp.di.app.AppComponent
+import com.github.vsbauer.libraryapp.di.app.AppProvider
+import com.github.vsbauer.libraryapp.di.app.AppWithAppProvider
+import com.github.vsbauer.libraryapp.di.app.DaggerAppComponent
 
 
-class App : Application(), HasAndroidInjector {
-    @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
+class App : Application(),
+    AppWithAppProvider {
+
+    companion object {
+        private var appProvider: AppProvider? = null
+    }
 
     override fun onCreate() {
         super.onCreate()
-        DaggerAppComponent.builder().application(this).build().inject(this)
+        (getAppProvider() as DaggerAppComponent).inject(this)
     }
 
-    override fun androidInjector(): AndroidInjector<Any> = dispatchingAndroidInjector
+    override fun getAppProvider(): AppProvider {
+        return appProvider ?: AppComponent.create(this).also {
+            appProvider = it
+        }
+    }
 
 }
