@@ -1,10 +1,8 @@
 package com.github.vsbauer.libraryapp
 
 import android.app.Application
-import com.github.vsbauer.libraryapp.di.app.AppComponent
-import com.github.vsbauer.libraryapp.di.app.AppProvider
-import com.github.vsbauer.libraryapp.di.app.AppWithAppProvider
-import com.github.vsbauer.libraryapp.di.app.DaggerAppComponent
+import com.github.vsbauer.core_api.AppProvider
+import com.github.vsbauer.core_api.AppWithAppProvider
 
 
 class App : Application(),
