@@ -1,2 +1,6 @@
+include ':recommendation'
+include ':core_impl'
+include ':core_api'
+include ':core'
 rootProject.name='LibraryApp'
 include ':app'

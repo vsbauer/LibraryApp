@@ -1,0 +1,32 @@
+ext {
+    retrofitVersion = '2.7.1'
+    jsr330Version = '1'
+    daggerVersion = '2.25.2'
+    roomVersion = '2.1.0'
+    picassoVersion = '2.71828'
+    flexLayoutVersion = '1.1.1'
+    viewPager2Version = '1.0.0-rc01'
+    coroutinesVersion = '1.1.1'
+    materialVersion = '1.1.0-beta02'
+    lifecycleVersion = '2.2.0'
+
+    retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    retrofitConverterGson = "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+
+    dagger = "com.google.dagger:dagger:$daggerVersion"
+    daggerCompiler = "com.google.dagger:dagger-compiler:$daggerVersion"
+    picasso = "com.squareup.picasso:picasso:$picassoVersion"
+
+    coroutinesDependencies = [
+            'coroutines_core'   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
+            'coroutines_android': "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+    ]
+
+    lifecycle = [
+            "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion",
+            "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion",
+            "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+    ]
+
+    material = "com.google.android.material:material:$materialVersion"
+}
