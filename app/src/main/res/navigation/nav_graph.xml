@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/recommendationFragment">
+    app:startDestination="@id/searchFragment">
 
     <fragment
-        android:id="@+id/recommendationFragment"
+        android:id="@+id/searchFragment"
         android:name="com.github.vsbauer.search.ui.SearchFragment"
         android:label="fragment_recommendation"
         tools:layout="@layout/fragment_recommendation" />

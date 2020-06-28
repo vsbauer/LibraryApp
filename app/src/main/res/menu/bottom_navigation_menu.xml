@@ -5,11 +5,11 @@
         android:icon="@drawable/ic_person"
         android:title="@string/my" />
     <item
-        android:id="@+id/recommendationFragment"
-        android:icon="@drawable/ic_recommendation"
-        android:title="@string/recommendation" />
+        android:id="@+id/searchFragment"
+        android:icon="@drawable/ic_search"
+        android:title="@string/search" />
     <item
         android:id="@+id/servicesFragment"
-        android:icon="@drawable/ic_service"
+        android:icon="@drawable/ic_statistic"
         android:title="@string/services" />
 </menu>
