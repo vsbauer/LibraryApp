@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.vsbauer.core_api.AppWithAppProvider
 import com.github.vsbauer.search.R
-import com.github.vsbauer.search.ui.di.SearchFragmentComponent
+import com.github.vsbauer.search.di.SearchFragmentComponent
 import kotlinx.android.synthetic.main.fragment_search.*
 import javax.inject.Inject
 
@@ -48,15 +48,16 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
         searchBooks("Book")
 
-        edit_txt_search.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
-            if (!hasFocus) {
-                (requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?)
-                    ?.hideSoftInputFromWindow(v.windowToken, 0)
+        edit_txt_search.apply {
+            onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
+                if (!hasFocus) {
+                    (requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?)
+                        ?.hideSoftInputFromWindow(v.windowToken, 0)
+                }
             }
-        }
-
-        edit_txt_search.addTextChangedListener {
-            searchBooks(it?.toString())
+            addTextChangedListener {
+                searchBooks(it?.toString())
+            }
         }
     }
 
