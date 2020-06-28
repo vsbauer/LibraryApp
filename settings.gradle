@@ -1,4 +1,4 @@
-include ':recommendation'
+include ':search'
 include ':core_impl'
 include ':core_api'
 include ':core'
