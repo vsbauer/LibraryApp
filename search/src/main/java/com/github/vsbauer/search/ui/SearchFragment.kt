@@ -1,8 +1,11 @@
 package com.github.vsbauer.search.ui
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -11,13 +14,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.vsbauer.core_api.AppWithAppProvider
 import com.github.vsbauer.search.R
 import com.github.vsbauer.search.ui.di.SearchFragmentComponent
-import kotlinx.android.synthetic.main.fragment_recommendation.*
+import kotlinx.android.synthetic.main.fragment_search.*
 import javax.inject.Inject
 
 
-class SearchFragment : Fragment(R.layout.fragment_recommendation) {
+class SearchFragment : Fragment(R.layout.fragment_search) {
 
-    private val recommendationAdapter = SearchAdapter(
+    private val searchAdapter = SearchAdapter(
         onItemClicked = {
             onItemClicked(it)
         }
@@ -36,21 +39,37 @@ class SearchFragment : Fragment(R.layout.fragment_recommendation) {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
         viewModel = ViewModelProvider(this, viewModelFactory)[SearchViewModel::class.java]
 
         recycler_search.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = recommendationAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = searchAdapter
+        }
+
+        searchBooks("Book")
+
+        edit_txt_search.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
+            if (!hasFocus) {
+                (requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?)
+                    ?.hideSoftInputFromWindow(v.windowToken, 0)
+            }
         }
 
         edit_txt_search.addTextChangedListener {
-            //todo
+            searchBooks(it?.toString())
+        }
+    }
+
+    private fun searchBooks(request: String?) {
+        request?.let {
+            if (request.length > 2) {
+                viewModel.getBooks(request)
+                    .observe(viewLifecycleOwner, Observer { list ->
+                        searchAdapter.updateData(list)
+                    })
+            }
         }
 
-        viewModel.getBooks("Android").observe(viewLifecycleOwner, Observer {
-            recommendationAdapter.updateData(it)
-        })
     }
 
     private fun onItemClicked(link: String) {

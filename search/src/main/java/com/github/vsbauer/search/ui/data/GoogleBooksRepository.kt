@@ -11,9 +11,9 @@ class GoogleBooksRepository @Inject constructor(private val service: BookApiServ
         try {
             return service.getBooks(search).bookDTOS.map {
                 Log.d("!!!Repos", it.toString())
-                val author = it.bookInfo.authors.firstOrNull() ?: ""
+                val author: String? = it.bookInfo.authors?.firstOrNull()
                 Book(
-                    author,
+                    author ?: "",
                     it.bookInfo.title,
                     it.bookInfo.imageLinks.thumbnail,
                     it.bookInfo.infoLink

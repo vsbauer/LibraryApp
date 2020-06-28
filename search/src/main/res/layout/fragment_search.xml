@@ -8,10 +8,12 @@
     <EditText
         android:id="@+id/edit_txt_search"
         android:layout_width="0dp"
+        android:inputType="textAutoCorrect"
+        android:lines="1"
         android:layout_height="wrap_content"
         android:hint="@string/edit_text_search_hint"
-        android:padding="8dp"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        android:padding="16dp"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,6 +25,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="edit_txt_search" />
+        app:layout_constraintTop_toBottomOf="@id/edit_txt_search" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

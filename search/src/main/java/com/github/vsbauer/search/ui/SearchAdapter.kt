@@ -1,5 +1,6 @@
 package com.github.vsbauer.search.ui
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ class SearchAdapter(val onItemClicked: (link: String) -> Unit) :
         data.clear()
         data.addAll(list)
         notifyDataSetChanged()
+        Log.d("!!!!Adapter", data.toString())
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =

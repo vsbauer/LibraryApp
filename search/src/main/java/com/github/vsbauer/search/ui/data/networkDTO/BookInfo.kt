@@ -6,7 +6,7 @@ data class BookInfo(
     @SerializedName("allowAnonLogging")
     val allowAnonLogging: Boolean,
     @SerializedName("authors")
-    val authors: List<String>,
+    val authors: List<String>?,
     @SerializedName("averageRating")
     val averageRating: Double,
     @SerializedName("canonicalVolumeLink")
