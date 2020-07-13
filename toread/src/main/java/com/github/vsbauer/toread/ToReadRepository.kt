@@ -1,19 +1,19 @@
 package com.github.vsbauer.toread
 
-import com.github.vsbauer.core.models.GoogleBook
+import com.github.vsbauer.core.models.Book
 import javax.inject.Inject
 
 class ToReadRepository @Inject constructor() {
 
-    fun addBook(googleBook: GoogleBook) {
+    fun addBook(book: Book) {
         //todo
     }
 
-    fun removeBook(googleBook: GoogleBook) {
+    fun removeBook(book: Book) {
         //todo
     }
 
-    fun bookIsRead(googleBook: GoogleBook) {
+    fun bookIsRead(book: Book) {
         //todo
     }
 }

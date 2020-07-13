@@ -4,16 +4,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.github.vsbauer.core.models.GoogleBook
+import com.github.vsbauer.core.models.Book
 import com.github.vsbauer.search.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.search_item.view.*
 
 class SearchAdapter(val onItemClicked: (link: String) -> Unit) :
     RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
-    private val data = ArrayList<GoogleBook>()
+    private val data = ArrayList<Book>()
 
-    fun updateData(list: List<GoogleBook>) {
+    fun updateData(list: List<Book>) {
         data.clear()
         data.addAll(list)
         notifyDataSetChanged()
@@ -33,13 +33,13 @@ class SearchAdapter(val onItemClicked: (link: String) -> Unit) :
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        fun bind(googleBook: GoogleBook) {
+        fun bind(book: Book) {
             itemView.apply {
-                txt_name.text = googleBook.tittle
-                txt_author.text = googleBook.author
-                Picasso.get().load(googleBook.img).into(img_book)
+                txt_name.text = book.tittle
+                txt_author.text = book.author
+                Picasso.get().load(book.img).into(img_book)
                 setOnClickListener {
-                    onItemClicked(googleBook.link)
+                    onItemClicked(book.link)
                 }
 
             }

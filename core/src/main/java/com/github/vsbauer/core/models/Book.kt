@@ -1,6 +1,6 @@
 package com.github.vsbauer.core.models
 
-data class GoogleBook(
+data class Book(
     val author: String = "",
     val tittle: String = "",
     val img: String = "",

@@ -5,16 +5,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
 import androidx.recyclerview.widget.RecyclerView
-import com.github.vsbauer.core.models.GoogleBook
+import com.github.vsbauer.core.models.Book
 import com.github.vsbauer.toread.R
 import kotlinx.android.synthetic.main.toread_item.view.*
 
 
-class ToReadAdapter(val onItemClicked: (googleBook: GoogleBook) -> Unit) :
+class ToReadAdapter(val onItemClicked: (book: Book) -> Unit) :
     RecyclerView.Adapter<ToReadAdapter.ViewHolder>() {
-    private val data = ArrayList<GoogleBook>()
+    private val data = ArrayList<Book>()
 
-    fun updateData(list: List<GoogleBook>) {
+    fun updateData(list: List<Book>) {
         data.clear()
         data.addAll(list)
         notifyDataSetChanged()
@@ -31,25 +31,25 @@ class ToReadAdapter(val onItemClicked: (googleBook: GoogleBook) -> Unit) :
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        fun bind(googleBook: GoogleBook, position: Int) {
+        fun bind(book: Book, position: Int) {
             itemView.apply {
                 checkbox_toread.setOnCheckedChangeListener { _: CompoundButton, flag: Boolean ->
                     if (flag) {
-                        data.remove(googleBook)
-                        data.add(googleBook)
+                        data.remove(book)
+                        data.add(book)
                         notifyItemMoved(position, data.size - 1)
                     } else {
-                        data.remove(googleBook)
-                        data.add(0, googleBook)
+                        data.remove(book)
+                        data.add(0, book)
                         notifyItemMoved(position, 0)
                     }
                 }
 
-                txt_name.text = googleBook.tittle
-                txt_author.text = googleBook.author
+                txt_name.text = book.tittle
+                txt_author.text = book.author
 
                 setOnClickListener {
-                    onItemClicked(googleBook)
+                    onItemClicked(book)
                 }
 
             }
