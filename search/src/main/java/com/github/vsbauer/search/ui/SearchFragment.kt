@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.github.vsbauer.core.models.Book
 import com.github.vsbauer.core_api.AppWithAppProvider
 import com.github.vsbauer.search.R
 import com.github.vsbauer.search.di.SearchFragmentComponent
@@ -23,6 +24,11 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     private val searchAdapter = SearchAdapter(
         onItemClicked = {
             onItemClicked(it)
+        },
+        onItemFav = { flag: Boolean, book: Book ->
+            if (flag) {
+                viewModel.saveBook(book)
+            }
         }
     )
 

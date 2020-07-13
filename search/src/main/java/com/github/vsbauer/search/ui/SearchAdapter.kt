@@ -9,7 +9,10 @@ import com.github.vsbauer.search.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.search_item.view.*
 
-class SearchAdapter(val onItemClicked: (link: String) -> Unit) :
+class SearchAdapter(
+    val onItemClicked: (link: String) -> Unit,
+    val onItemFav: (isChecked: Boolean, book: Book) -> Unit
+) :
     RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
     private val data = ArrayList<Book>()
 
@@ -38,6 +41,9 @@ class SearchAdapter(val onItemClicked: (link: String) -> Unit) :
                 txt_name.text = book.tittle
                 txt_author.text = book.author
                 Picasso.get().load(book.img).into(img_book)
+                btn_fav.setOnCheckedChangeListener { _, isChecked ->
+                    onItemFav(isChecked, book)
+                }
                 setOnClickListener {
                     onItemClicked(book.link)
                 }
