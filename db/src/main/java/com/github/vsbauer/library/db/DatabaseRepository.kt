@@ -2,7 +2,6 @@ package com.github.vsbauer.library.db
 
 import android.content.Context
 import com.github.vsbauer.core.models.Book
-import com.octotools.db.Database
 import com.squareup.sqldelight.android.AndroidSqliteDriver
 import javax.inject.Inject
 

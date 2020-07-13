@@ -1,4 +1,4 @@
-package com.octotools.db
+package com.github.vsbauer.library.db
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -17,6 +17,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.octotools.db.test", appContext.packageName)
+        assertEquals("com.github.vsbauer.library.db.test", appContext.packageName)
     }
 }
