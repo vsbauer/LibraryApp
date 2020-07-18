@@ -3,14 +3,17 @@ package com.github.vsbauer.toread.ui
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CompoundButton
 import androidx.recyclerview.widget.RecyclerView
 import com.github.vsbauer.core.models.Book
 import com.github.vsbauer.toread.R
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.toread_item.view.*
 
 
-class ToReadAdapter(val onItemClicked: (book: Book) -> Unit) :
+class ToReadAdapter(
+    private val onItemClicked: (book: Book) -> Unit,
+    private val onRemoveClicked: (book: Book) -> Unit
+) :
     RecyclerView.Adapter<ToReadAdapter.ViewHolder>() {
     private val data = ArrayList<Book>()
 
@@ -26,32 +29,25 @@ class ToReadAdapter(val onItemClicked: (book: Book) -> Unit) :
     override fun getItemCount(): Int = data.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(data[position], position)
+        holder.bind(data[position])
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        fun bind(book: Book, position: Int) {
+        fun bind(book: Book) {
             itemView.apply {
-                checkbox_toread.setOnCheckedChangeListener { _: CompoundButton, flag: Boolean ->
-                    if (flag) {
-                        data.remove(book)
-                        data.add(book)
-                        notifyItemMoved(position, data.size - 1)
-                    } else {
-                        data.remove(book)
-                        data.add(0, book)
-                        notifyItemMoved(position, 0)
-                    }
-                }
 
                 txt_name.text = book.tittle
                 txt_author.text = book.author
-
+                Picasso.get().load(book.img).into(img_book)
+                btn_remove.setOnClickListener {
+                    onRemoveClicked(book)
+                    data.remove(book)
+                    notifyDataSetChanged()
+                }
                 setOnClickListener {
                     onItemClicked(book)
                 }
-
             }
         }
     }

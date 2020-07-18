@@ -8,7 +8,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        minSdkVersion 22
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -38,12 +38,15 @@ dependencies {
 
     implementation constraintLayout
     implementation recyclerView
+    implementation 'com.ernestoyaquello.dragdropswiperecyclerview:drag-drop-swipe-recyclerview:0.6.0'
 
     implementation lifecycle
     implementation dagger
     kapt daggerCompiler
     implementation material
+    implementation picasso
 
+    implementation project(":db")
     implementation project(":core")
     implementation project(":core_api")
     implementation project(":core_impl")

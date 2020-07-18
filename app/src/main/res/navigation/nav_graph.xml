@@ -10,4 +10,8 @@
         android:name="com.github.vsbauer.search.ui.SearchFragment"
         android:label="fragment_recommendation"
         tools:layout="@layout/fragment_recommendation" />
+    <fragment
+        android:id="@+id/toReadFragment"
+        android:name="com.github.vsbauer.toread.ui.ToReadFragment"
+        android:label="ToReadFragment" />
 </navigation>

@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.search_item.view.*
 
 class SearchAdapter(
     val onItemClicked: (link: String) -> Unit,
-    val onItemFav: (isChecked: Boolean, book: Book) -> Unit
+    val onItemFav: (book: Book) -> Unit
 ) :
     RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
     private val data = ArrayList<Book>()
@@ -41,8 +41,8 @@ class SearchAdapter(
                 txt_name.text = book.tittle
                 txt_author.text = book.author
                 Picasso.get().load(book.img).into(img_book)
-                btn_fav.setOnCheckedChangeListener { _, isChecked ->
-                    onItemFav(isChecked, book)
+                btn_fav.setOnClickListener {
+                    onItemFav(book)
                 }
                 setOnClickListener {
                     onItemClicked(book.link)

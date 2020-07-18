@@ -14,7 +14,7 @@ abstract class ToReadFragmentModule {
     @Binds
     @IntoMap
     @ViewModelKey(ToReadViewModel::class)
-    abstract fun bindSearchViewModel(viewModel: ToReadViewModel): ViewModel
+    abstract fun bindToReadViewModel(viewModel: ToReadViewModel): ViewModel
 
 
 }

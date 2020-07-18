@@ -43,12 +43,11 @@
             app:layout_constraintStart_toEndOf="@+id/img_book"
             app:layout_constraintTop_toBottomOf="@+id/txt_name" />
 
-        <CheckBox
+        <ImageView
             android:id="@+id/btn_fav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:button="@android:drawable/btn_star"
+            android:src="@drawable/ic_star_empty"
             android:padding="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

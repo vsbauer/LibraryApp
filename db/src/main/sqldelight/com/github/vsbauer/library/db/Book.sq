@@ -19,3 +19,7 @@ INSERT INTO SavedBooks(
   link
 )
 VALUES (?, ?, ?, ?);
+
+delete:
+DELETE FROM SavedBooks
+WHERE author IN ? AND tittle IN ?;

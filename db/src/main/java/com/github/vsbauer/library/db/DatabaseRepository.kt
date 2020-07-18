@@ -14,7 +14,18 @@ class DatabaseRepository @Inject constructor(appContext: Context) {
 
     private val queries = Database(androidSqlDriver).bookQueries
 
-    fun getSavedBooks(): List<SavedBooks> = queries.selectAll().executeAsList()
+    fun getSavedBooks(): List<Book> = queries.selectAll().executeAsList().map {
+        Book(
+            author = it.author ?: "",
+            tittle = it.tittle ?: "",
+            img = it.img ?: "",
+            link = it.link ?: ""
+        )
+    }
 
     fun saveBook(book: Book) = queries.insert(book.author, book.tittle, book.img, book.link)
+
+    fun removeBook(book: Book) {
+        queries.delete(listOf(book.author), listOf(book.tittle))
+    }
 }

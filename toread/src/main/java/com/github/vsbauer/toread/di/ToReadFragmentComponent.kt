@@ -3,7 +3,6 @@ package com.github.vsbauer.toread.di
 import com.github.vsbauer.core_api.AppProvider
 import com.github.vsbauer.core_api.FragmentScope
 import com.github.vsbauer.core_impl.ViewModelModule
-import com.github.vsbauer.toread.DaggerToReadFragmentComponent
 import com.github.vsbauer.toread.ui.ToReadFragment
 import dagger.Component
 
