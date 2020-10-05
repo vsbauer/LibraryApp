@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.squareup.sqldelight'
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -24,7 +25,6 @@ android {
         }
     }
 }
-
 apply from: "$project.rootDir/deps.gradle"
 
 dependencies {
@@ -35,18 +35,11 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation "com.squareup.sqldelight:android-driver:1.4.0"
+    testImplementation "com.squareup.sqldelight:sqlite-driver:1.3.0"
 
-    implementation constraintLayout
-    implementation recyclerView
-    implementation 'com.ernestoyaquello.dragdropswiperecyclerview:drag-drop-swipe-recyclerview:0.6.0'
-
-    implementation lifecycle
     implementation dagger
     kapt daggerCompiler
-    implementation material
-    implementation picasso
-
-    implementation project(":db")
     implementation project(":core")
     implementation project(":core_api")
     implementation project(":core_impl")
