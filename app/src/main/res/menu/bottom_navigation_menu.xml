@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/toReadFragment"
+        android:icon="@drawable/ic_person"
+        android:title="@string/to_read" />
+    <item
+        android:id="@+id/searchFragment"
+        android:icon="@drawable/ic_search"
+        android:title="@string/search" />
+    <item
+        android:id="@+id/servicesFragment"
+        android:icon="@drawable/ic_statistic"
+        android:title="@string/services" />
+</menu>

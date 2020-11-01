@@ -1,18 +1,16 @@
 package com.github.vsbauer.libraryapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.github.vsbauer.libraryapp.ui.main.MainFragment
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
+import kotlinx.android.synthetic.main.main_activity.*
 
-class MainActivity : AppCompatActivity() {
+
+class MainActivity : AppCompatActivity(R.layout.main_activity) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_activity)
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, MainFragment.newInstance())
-                    .commitNow()
-        }
+        bottom_navigation.setupWithNavController(findNavController(R.id.navigation_container))
     }
 }

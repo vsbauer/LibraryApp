@@ -1,0 +1,25 @@
+CREATE TABLE SavedBooks (
+   id INTEGER NOT NULL UNIQUE PRIMARY KEY,
+   author TEXT,
+   tittle TEXT,
+   img TEXT,
+   link TEXT
+);
+
+selectAll:
+SELECT *
+FROM SavedBooks
+ORDER BY author;
+
+insert:
+INSERT INTO SavedBooks(
+  author,
+  tittle,
+  img,
+  link
+)
+VALUES (?, ?, ?, ?);
+
+delete:
+DELETE FROM SavedBooks
+WHERE author IN ? AND tittle IN ?;
